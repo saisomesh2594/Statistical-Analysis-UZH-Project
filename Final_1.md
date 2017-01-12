@@ -80,6 +80,8 @@ kable(data_analysis, caption = "Table1: Each files was downsampled with 5000 sam
 <br /><br />
 It is interesting to look at box plots of one specific patient. Figure 2 below shows the same data as in Table 1 for patient 2. This box plot reveals that for our 10xsampling there are outliers for CD14 and CD45. If, as proposed in the paper, the clustering and feature selection process would only be iterated once, this could have an impact on the result. In other words, our small test has shown that even in 10 sub-sampling it is possible to have datasets containing outliers what could lead to different results in hierarchical clustering.  
 <br /><br />
+![](Images/Patient2.png)
+
 ```{r results='asis',fig.align='center',fig.cap=capbox, echo=FALSE}
 par(mfrow=c(5,2))
 marker_names = c("CD3","CD45","CD4","CD20","CD33","CD123","CD14","igM","HLA-DR","CD7")
@@ -100,6 +102,8 @@ The Bodenmiller data is clustered by the intensity of the extra cellular markers
 After clustering it is interesting to look at the topology of the resulting clustering graphs. Figure 3 below shows a graph of clusters containing at least 1% of the total data. A graph is shown for each extra cellular marker and the clusters are color coded according to the relative intensity of the marker in that cluster. This type of graphs reveals subsets of cells in the data. Interesting is the sub graphs which are prominent for CD20 and CD33 but reappears in half of all the graphs. It can be speculated, that this sub graph represents an important subset of the cells because they appear to have several markers differentialy expressed. Notably this clear substructure was not detected in each clustering. In fact, we had to cluster several times to achieve a nice result like this as is presented in the paper (Figure S12 [@Bruggner2014]). 
 <br /><br /><br />
 
+![](Images/submitme_hierarchy.png)
+
 <figure align="middle">
   <img src="C:/Users/user/Downloads/STA426Project/submitme_hierarchy.png" alt="-" width="608" height="460" align="middle">
   <figcaption>Figure 3. Hierarchical plot of all clusters containing at least 1% of the total data. The relative intensity of the extra cellular markers are color coded and show the existence of sub graphs which correspond to sub populations of cells.</figcaption>
@@ -110,6 +114,7 @@ After clustering it is interesting to look at the topology of the resulting clus
 ##Compare clustering with different subsamples
 Figure 4 illustrate the diversity of results we obtained. These instances of clustering have a significant number of clusters at 5% in a range of 31 to 40. In neither of them did we find a clear sub graph represented over multiple markers.
 <br /><br />
+![](Images/4clusterings.png)
 <figure >
   <img src="C:/Users/user/Downloads/STA426Project/4clusterings.png" alt="-" >
   <figcaption>Figure 4. Hierarchy graphs based on four different sub-sampling of the data. Plotted are clusters with more then 1% of the data. Number of clusters for 5% of the data range from 32 to 40 among these four clusterings. </figcaption>
@@ -139,6 +144,7 @@ The descriptive cluster features were used to train a nearest shrunken centroid 
 In order to determine all features that differed between the different sample groups, error plot produced above was used to identify the smallest regularization threshold that produced a model with acceptable cross validation accuracy and an estimated feature FDR of < 1%. Using this, Citrus constrained the final classificaiton model from all sample. From the original set of 504 cluster features, a subset of 51 was chosen as which differed between the two simulation conditions. The cutoff line is drawn at the point where the cross validation mean and feature false discovery rate is 0. This line intersects the regularization threshold axis at 2.24805 and the Number of features axis at 51
 
 ##Model Error Rate
+![](Images/ModelErrorRate.png)
 ```{r fig.align='center',fig.cap=capimg, echo=FALSE}
 par(mar=c(5,4,4,6)+0.1)
 
@@ -208,7 +214,10 @@ Taking a closer look median feature values, it can be observed that it contains 
                                  --------------------   + a
                                     max(x) - min(x)
 
-Here, x goes through all the 504 columns of median Features, and thus the data is normalized to obtain more informative plots.                      
+Here, x goes through all the 504 columns of median Features, and thus the data is normalized to obtain more informative plots.  
+
+![](Images/TopFeatures.png)
+
 ```{r echo=FALSE}
 medianFeatures_trans <- matrix(nrow = 16, ncol = 504)
 for(i in 1:504){
