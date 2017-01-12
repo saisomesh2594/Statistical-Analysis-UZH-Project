@@ -144,7 +144,7 @@ The descriptive cluster features were used to train a nearest shrunken centroid 
 In order to determine all features that differed between the different sample groups, error plot produced above was used to identify the smallest regularization threshold that produced a model with acceptable cross validation accuracy and an estimated feature FDR of < 1%. Using this, Citrus constrained the final classificaiton model from all sample. From the original set of 504 cluster features, a subset of 51 was chosen as which differed between the two simulation conditions. The cutoff line is drawn at the point where the cross validation mean and feature false discovery rate is 0. This line intersects the regularization threshold axis at 2.24805 and the Number of features axis at 51
 
 ##Model Error Rate
-![](Images/ModelErrorRate.png)
+
 ```{r fig.align='center',fig.cap=capimg, echo=FALSE}
 par(mar=c(5,4,4,6)+0.1)
 
@@ -203,6 +203,7 @@ legend("topleft",
         col = c("blue", "black","green","red"), 
         pch = c(20,20,20,20))
 ```
+![](Images/ModelErrorRate.png)
 
 ##Top Features
 As discussed in the introduction, the goal was to reproduce the four top features that are shown in Figure 2A [@Bruggner2014]. The citrus endpoint regression function put out a list of features for the two thresholds that are available. It is not clear in what order this list it, nor is it documented anywhere. It is clear though that this list is not ordered in how significant a feature is. In the supplementary material it mentioned in a figure caption depicting top features, that feature are ordered by model weight. Unfortunately we were not able to determine this model weights. As an alternative in order to estimate the for top features we here apply a two sample Kolmogorov–Smirnov test. Unfortunately these are not the features that we hoped to see. In fact, the features that we wanted are not even in the list of all features selected under the model with the FDR threshold.
@@ -215,8 +216,6 @@ Taking a closer look median feature values, it can be observed that it contains 
                                     max(x) - min(x)
 
 Here, x goes through all the 504 columns of median Features, and thus the data is normalized to obtain more informative plots.  
-
-![](Images/TopFeatures.png)
 
 ```{r echo=FALSE}
 medianFeatures_trans <- matrix(nrow = 16, ncol = 504)
@@ -232,6 +231,7 @@ rownames(medianFeatures_trans) <- rownames(citrus.foldFeatureSet$allFeatures)
 colnames(medianFeatures_trans) <- colnames(citrus.foldFeatureSet$allFeatures)
 ```
 
+#BoxPlots
 ```{r fig.align='center',fig.cap=capbox1, echo=FALSE}
 #Box plot for the first 4 features.
 list_fea <- citrus.regressionResult$differentialFeatures$cv.fdr.constrained$features
@@ -262,41 +262,7 @@ for(i in top4){
           horizontal = TRUE, names=c('BCR-XL','Reference'),main=colnames(medianFeatures_trans)[i])
 }
 ```
-
-
-```{r fig.align='center',fig.cap=capbox2, echo=FALSE, eval=FALSE}
-#Box plot for the first 4 features.
-list_fea_2 <- modelFeatures$cv.min$features 
-
-p_result_2 = vector(mode="numeric", length =length(list_fea_2))
-#to determine the order of features, i.e. which is the best, we apply a t test to determine the p value for distributions drawn from the same sample. with this we hope to say something about how good the distributions are seperated 
-for(i in 1:length(list_fea_2)){
-  p_result_2[i] = ks.test(medianFeatures[1:8,list_fea_2[i]],
-                        medianFeatures[9:16,list_fea_2[i]])[2]
-}
-top4_2 = vector(mode="numeric", length=4)
-temp_2 = 0
-#some weird way to find 4 top features
-for(j in 1:4){
-  #fidn max in p_result, save it, set to 0, find next
-  for(i in 1:length(list_fea_2)){
-    if(p_result_2[[i]] > temp_2)
-      top4_2[j] = i
-      temp_2 = p_result_2[i]  
-  }
-  p_result_2[top4[j]] = 0
-}
-par(mar=c(2,2,2,2))
-par(mfrow=c(2,2))
-
-for(i in top4_2){
-  boxplot(medianFeatures[1:8,list_fea[i]],
-          medianFeatures[9:16,list_fea[i]],
-          horizontal = TRUE, 
-          names=c('BCR-XL','Reference'),
-          main = colnames(medianFeatures[i]))
-}
-```
+![](Images/TopFeatures.png)
 
 ##Conclusion
 We were not able to reproduce the paper, as we set out to do. It is actually not even possible to exactly reproduce it due to the sub sampling as we have shown. Further more, depending on the sub sampling, the regression model can or cannot reach cross validation error rate of zero. In many cases the error rate would drop to zero only after the FDR rate started to rise. Citrus will then automatically select the threshold where the cross validation error rate is zero, while the FDR is already up 20% and in total 90%+ of all features are selected. What has been published is a very nice and clean instance, that we were not able to reproduce. And we tried.
