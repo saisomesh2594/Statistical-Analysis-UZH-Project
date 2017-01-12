@@ -7,7 +7,7 @@ output:
   pdf_document: default
   html_document:
     css: Results/mystyle.css
-bibliography: biblio.bib
+bibliography: Results/biblio.bib
 
 ---
 <br\><br\><br/>
