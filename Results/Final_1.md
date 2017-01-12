@@ -6,7 +6,7 @@ date: "Januar 7, 2017"
 output:
   pdf_document: default
   html_document:
-    css: C:/Users/user/Downloads/STA426Project/mystyle.css
+    css: Results/mystyle.css
 bibliography: biblio.bib
 
 ---
@@ -72,6 +72,7 @@ barplot(eventcount,main="Event distribution",
                     "p8 BCR-XL","p8 ref"),las=2)
 ```
 ![](Images/EventDistribution.png)
+
 The function sample() from the R base package is used to select 5000 random data points from each FCS files, if available. As we have tried to reproduce the exact data obtained by Bruggner et al. we found that this is not possible. We suspect this to be the result of sub sampling the date. Each time citrus selects 5000 out of 17'000 events the clustering results are different. Because in hierarchical clustering every data point is seen as a cluster, a significance threshold of 5% was defined. In order words, only clusters containing 5% or more of the total data are seen as significant enough to be considered for further analysis. The original paper represented a clustering containing 31 significant clusters. During our work with citrus and the Bodenmiller data we clustered the data dozens of times and everything from 31 to 37 clusters were obtained, every number multiple times expect 31. We got 31 exactly once. To get an idea how different the sub-samples really are, we decided to sub-sample 5000 data points for each data file 10 times and calculate the mean and standard deviation of the mean of the intensity of the markers. Table 1 below shows the result of this sub-sampling. We sampled 10 times to really get a feeling of range of different types of possible results and not get tricked by the law of large numbers into thinking that there is very low variance. The method proposed by Bruggner et al. uses only one iteration of clustering and feature selection after all. As we can see in Table 1 below the standard deviations of the sample would suggests that few iterations of the clustering process would give a good average representation of the data.   
 
 ```{r results='asis',echo=FALSE}
