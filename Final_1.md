@@ -80,7 +80,7 @@ kable(data_analysis, caption = "Table1: Each files was downsampled with 5000 sam
 <br /><br />
 It is interesting to look at box plots of one specific patient. Figure 2 below shows the same data as in Table 1 for patient 2. This box plot reveals that for our 10xsampling there are outliers for CD14 and CD45. If, as proposed in the paper, the clustering and feature selection process would only be iterated once, this could have an impact on the result. In other words, our small test has shown that even in 10 sub-sampling it is possible to have datasets containing outliers what could lead to different results in hierarchical clustering.  
 <br /><br />
-![](Images/Patient2.png)
+
 
 ```{r results='asis',fig.align='center',fig.cap=capbox, echo=FALSE}
 par(mfrow=c(5,2))
@@ -92,6 +92,8 @@ for(x in 1:10){
   boxplot(as.data.frame(avgintensity_plot[,x]), main = paste("Patient 2 BCR-XL",marker_names[x]),
           horizontal = TRUE)
   }
+  
+  ![](Images/Patient2.png)
 ```
 <br /><br />
 
@@ -102,10 +104,9 @@ The Bodenmiller data is clustered by the intensity of the extra cellular markers
 After clustering it is interesting to look at the topology of the resulting clustering graphs. Figure 3 below shows a graph of clusters containing at least 1% of the total data. A graph is shown for each extra cellular marker and the clusters are color coded according to the relative intensity of the marker in that cluster. This type of graphs reveals subsets of cells in the data. Interesting is the sub graphs which are prominent for CD20 and CD33 but reappears in half of all the graphs. It can be speculated, that this sub graph represents an important subset of the cells because they appear to have several markers differentialy expressed. Notably this clear substructure was not detected in each clustering. In fact, we had to cluster several times to achieve a nice result like this as is presented in the paper (Figure S12 [@Bruggner2014]). 
 <br /><br /><br />
 
-![](Images/submitme_hierarchy.png)
 
 <figure align="middle">
-  <img src="C:/Users/user/Downloads/STA426Project/submitme_hierarchy.png" alt="-" width="608" height="460" align="middle">
+  <img src="![](Images/submitme_hierarchy.png)" alt="-" width="608" height="460" align="middle">
   <figcaption>Figure 3. Hierarchical plot of all clusters containing at least 1% of the total data. The relative intensity of the extra cellular markers are color coded and show the existence of sub graphs which correspond to sub populations of cells.</figcaption>
 </figure>
 
