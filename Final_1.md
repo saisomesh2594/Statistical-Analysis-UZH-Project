@@ -105,7 +105,7 @@ After clustering it is interesting to look at the topology of the resulting clus
 
 
 <figure align="middle">
-  <img src="Images/submitme_hierarchy.png" alt="-" width="800" height="600" align="middle">
+  <img src="Images/submitme_hierarchy.png" alt="-" align="middle">
   <figcaption>Figure 3. Hierarchical plot of all clusters containing at least 1% of the total data. The relative intensity of the extra cellular markers are color coded and show the existence of sub graphs which correspond to sub populations of cells.</figcaption>
 </figure>
 
