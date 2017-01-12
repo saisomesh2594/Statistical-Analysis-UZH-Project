@@ -264,6 +264,22 @@ for(i in top4){
 ```
 ![](Images/TopFeatures.png)
 
+<br /><br />
+<figure >
+  <img src="Images/TopFeatures2.png" alt="-" align="middle">
+  <figcaption>Figure 7. Box plots for the Top 4 features obtained after applying KS test. Derived from Citrus </figcaption>
+</figure>
+<br /><br />
+
+Figure 8 illustrates the hierarchy graph in which all the clusters (highlighted) contain the pNFkB(Nd142)Dd median. It can be seen that the clusters 75573, 75574, 75575 and 75576 are the center of this hierarchical graph. These are the same clusters which were identified as having Top Features through the KS test. 
+<br /><br />
+<figure >
+  <img src="Images/clusterhighlighted_white.png" alt="-" align="middle" >
+  <figcaption>Figure 8. Hierarchy Graph showing all the clusters that contain pNFkB(Nd142)Dd median. Derived from Citrus </figcaption>
+</figure>
+<br /><br />
+
+
 ##Conclusion
 We were not able to reproduce the paper, as we set out to do. It is actually not even possible to exactly reproduce it due to the sub sampling as we have shown. Further more, depending on the sub sampling, the regression model can or cannot reach cross validation error rate of zero. In many cases the error rate would drop to zero only after the FDR rate started to rise. Citrus will then automatically select the threshold where the cross validation error rate is zero, while the FDR is already up 20% and in total 90%+ of all features are selected. What has been published is a very nice and clean instance, that we were not able to reproduce. And we tried.
 Many important pieces of information are not given in the paper nor the supplementary material. It is not clear as to why clusters are based on extra cellular and features on intra cellular markers. It is not exactly clear how features have been calculated for the publications. The authors claim to have a total of 465 features after taking the mean of each marker for each cluster. With 31 clusters and 14 markers that would be 434 features. Our features where always expected number. Further it is not clear how the top feature are selected. 
