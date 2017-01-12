@@ -78,7 +78,7 @@ The function sample() from the R base package is used to select 5000 random data
 ```{r results='asis',echo=FALSE}
 kable(data_analysis, caption = "Table1: Each files was downsampled with 5000 samples for 10 times. Each time the mean marker intensity for the extracellular markers was calculated. Here we show the mean of 10 means ± s.d.. Patient 1 has s.d. zero because the files contain less than 5000 events.",format = "html")
 ```
-![](Images/table2.png)
+![](Images/table1.PNG)
 
 <br /><br />
 It is interesting to look at box plots of one specific patient. Figure 2 below shows the same data as in Table 1 for patient 2. This box plot reveals that for our 10xsampling there are outliers for CD14 and CD45. If, as proposed in the paper, the clustering and feature selection process would only be iterated once, this could have an impact on the result. In other words, our small test has shown that even in 10 sub-sampling it is possible to have datasets containing outliers what could lead to different results in hierarchical clustering.  
