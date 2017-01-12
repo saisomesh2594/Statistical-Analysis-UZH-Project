@@ -92,9 +92,8 @@ for(x in 1:10){
   boxplot(as.data.frame(avgintensity_plot[,x]), main = paste("Patient 2 BCR-XL",marker_names[x]),
           horizontal = TRUE)
   }
-  
-  ![](Images/Patient2.png)
 ```
+![](Images/Patient2.png)
 <br /><br />
 
 ##Clustering of data by extracellular markers
@@ -106,7 +105,7 @@ After clustering it is interesting to look at the topology of the resulting clus
 
 
 <figure align="middle">
-  <img src="![](Images/submitme_hierarchy.png)" alt="-" width="608" height="460" align="middle">
+  <img src="Images/submitme_hierarchy.png" alt="-" width="608" height="460" align="middle">
   <figcaption>Figure 3. Hierarchical plot of all clusters containing at least 1% of the total data. The relative intensity of the extra cellular markers are color coded and show the existence of sub graphs which correspond to sub populations of cells.</figcaption>
 </figure>
 
