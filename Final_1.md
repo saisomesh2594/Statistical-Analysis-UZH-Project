@@ -5,7 +5,7 @@ author: "Hannes Wartmann ( ), Somesh Venkatakrishnan Sai (16-947-640)"
 date: "Januar 7, 2017"
 output:
   pdf_document: default
-  tml_document:
+  html_document:
     css: C:/Users/user/Downloads/STA426Project/mystyle.css
 bibliography: biblio.bib
 
