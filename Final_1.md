@@ -116,7 +116,7 @@ Figure 4 illustrate the diversity of results we obtained. These instances of clu
 <br /><br />
 ![](Images/4clusterings.png)
 <figure >
-  <img src="C:/Users/user/Downloads/STA426Project/4clusterings.png" alt="-" >
+  <img src="Images/4clusterings.png" alt="-" >
   <figcaption>Figure 4. Hierarchy graphs based on four different sub-sampling of the data. Plotted are clusters with more then 1% of the data. Number of clusters for 5% of the data range from 32 to 40 among these four clusterings. </figcaption>
 </figure>
 <br /><br />
