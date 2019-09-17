@@ -1,2 +1,2 @@
 Results/* linguist-vendored
-*.Rdata linguist-language=R
+Results/*.Rdata linguist-language=R
